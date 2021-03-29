@@ -1,0 +1,345 @@
+
+#   _____ ___________________   ___ ___   .__________
+#  /  _  \\______   \_   ___ \ /   |   \  |__\_____  \            _________  ______  ______
+# /  /_\  \|       _/    \  \//    ~    \ |  | _(__  <   ______  / ___\__  \ \____ \/  ___/
+#/    |    \    |   \     \___\    Y    / |  |/       \ /_____/ / /_/  > __ \|  |_> >___ \
+#\____|__  /____|_  /\______  /\___|_  /  |__/______  /         \___  (____  /   __/____  >
+#        \/       \/        \/       \/             \/         /_____/     \/|__|       \/
+
+# Define $mod key
+set $mod Mod4
+
+# Define the movements keys - variables
+set $up l
+set $down k
+set $left j
+set $right semicolon
+
+# Windows decoration colors
+# class                 border  backgr. text    indicator
+client.placeholder      #242424 #242424 #242424 #666666
+client.background       #242424 #242424 #242424
+client.focused          #3F7ABE #4A4A4A #CF2332 #666666 #bd468a
+client.unfocused        #1164A7 #222222 #A22330 #1164A7 #4e4fcd
+client.focused_inactive #222222 #222222 #a9a9a9 #666666 #294fc5
+client.urgent           #d42121 #d42121 #f7f7f7 #666666
+
+# rounded corners
+border_radius 7`
+
+# shortcuts
+bindsym Control+Shift+t exec termite
+bindsym $Mod+g          exec chromium
+bindsym $Mod+s          exec steam
+
+#####################################################################################################################
+#################                          Define the movements keys - variables                    #################
+#####################################################################################################################
+
+
+#This is setup for qwerty
+set $up l
+set $down k
+set $left j
+set $right semicolon
+
+#This is setup for azerty
+#set $up l
+#set $down k
+#set $left j
+#set $right m
+
+
+
+#####################################################################################################################
+#################                          Single and Dual screen                                   #################
+#####################################################################################################################
+
+
+# setting variables for later use
+# use xrandr and/or arandr to know the names of your monitors
+# use this line to tell which monitor is on the right
+# xrandr --output DVI-I-2 --right-of DVI-I-1 --auto
+#exec --no-startup-id xrandr --output LVDS1 --mode 1366x768 --output DP3 --mode 1920x1080 --right-of LVDS1
+#exec --no-startup-id xrandr --output DVI-I-0 --right-of HDMI-0 --auto
+#exec --no-startup-id xrandr --output DVI-1 --right-of DVI-0 --auto
+#exec --no-startup-id xrandr --output DVI-D-1 --right-of DVI-I-1 --auto
+exec --no-startup-id xrandr --output HDMI2 --right-of HDMI1 --auto
+
+
+# my current setup
+
+#set $firstMonitor DP3
+#set $secondMonitor LVDS1
+
+#set $firstMonitor DVI-I-0
+#set $secondMonitor HDMI-0
+
+
+#set $firstMonitor DVI-0
+#set $secondMonitor DVI-1
+
+#set $firstMonitor DVI-I-1
+#set $secondMonitor DVI-D-1
+
+set $firstMonitor HDMI1
+set $secondMonitor HDMI2
+
+workspace 1 output $firstMonitor
+workspace 2 output $firstMonitor
+workspace 3 output $firstMonitor
+workspace 4 output $firstMonitor
+workspace 5 output $firstMonitor
+workspace 6 output $secondMonitor
+workspace 7 output $secondMonitor
+workspace 8 output $secondMonitor
+workspace 9 output $secondMonitor
+workspace 10 output $secondMonitor
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1; workspace 1
+bindsym $mod+Shift+2 move container to workspace 2; workspace 2
+bindsym $mod+Shift+3 move container to workspace 3; workspace 3
+bindsym $mod+Shift+4 move container to workspace 4; workspace 4
+bindsym $mod+Shift+5 move container to workspace 5; workspace 5
+bindsym $mod+Shift+6 move container to workspace 6; workspace 6
+bindsym $mod+Shift+7 move container to workspace 7; workspace 7
+bindsym $mod+Shift+8 move container to workspace 8; workspace 8
+bindsym $mod+Shift+9 move container to workspace 9; workspace 9
+bindsym $mod+Shift+0 move container to workspace 10; workspace 10
+
+# start dmenu
+bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#0e3068' -nf '#bd468a' -sb '#766c69' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=20'
+
+
+
+
+
+
+
+#Single and Dual screen
+# setting variables for later use
+# use xrandr and/or arandr to know the names of your monitors
+# use this line to tell which monitor is on the right
+# xrandr --output DVI-I-2 --right-of DVI-I-1 --auto
+#exec --no-startup-id xrandr --output LVDS1 --mode 1366x768 --output DP3 --mode 1920x1080 --right-of LVDS1
+#exec --no-startup-id xrandr --output DVI-I-0 --right-of HDMI-0 --auto
+#exec --no-startup-id xrandr --output DVI-1 --right-of DVI-0 --auto
+#exec --no-startup-id xrandr --output DVI-D-1 --right-of DVI-I-1 --auto
+exec --no-startup-id xrandr --output HDMI2 --right-of HDMI1 --auto
+
+#exit
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+#Press $mod (super) and X to exit - check toolbar for next choices
+bindsym $mod+X mode "$mode_system"
+bindsym control+mod1+Delete mode "$mode_system"
+
+set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
+mode "$mode_system" {
+    bindsym k exec --no-startup-id ~/.config/i3/scripts/i3exit.sh lock, mode "default"
+    bindsym l exec --no-startup-id ~/.config/i3/scripts/i3exit.sh logout, mode "default"
+    bindsym u exec --no-startup-id ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+
+#####################################################################################################################
+#################                          reload changed configuration                             #################
+#####################################################################################################################
+
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+
+
+
+#####################################################################################################################
+#################                          Stopping an application                                  #################
+#####################################################################################################################
+
+# kill focused window
+bindsym $mod+Shift+q kill
+bindsym $mod+q kill
+
+
+
+#####################################################################################################################
+#################                          Moving around in i3                                      #################
+#####################################################################################################################
+
+# change focus
+bindsym $Mod+$left  focus left
+bindsym $Mod+$down  focus down
+bindsym $Mod+$up    focus up
+bindsym $Mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $Mod+Left  focus left
+bindsym $Mod+Down  focus down
+bindsym $Mod+Up    focus up
+bindsym $Mod+Right focus right
+
+bindsym $Mod+p focus parent
+bindsym $Mod+c focus child
+
+# move focused window
+bindsym $Mod+Shift+$left  move left  30px
+bindsym $Mod+Shift+$down  move down  30px
+bindsym $Mod+Shift+$up    move up    30px
+bindsym $Mod+Shift+$right move right 30px
+
+# alternatively, you can use the cursor keys:
+bindsym $Mod+Shift+Up    move up    30px
+bindsym $Mod+Shift+Down  move down  30px
+bindsym $Mod+Shift+Left  move left  30px
+bindsym $Mod+Shift+Right move right 30px
+
+# Size
+bindsym Mod1+Up    resize shrink height 10 px or 1 ppt
+bindsym Mod1+Down  resize grow   height 10 px or 1 ppt
+bindsym Mod1+Left  resize shrink width  10 px or 1 ppt
+bindsym Mod1+Right resize grow   width  10 px or 1 ppt
+
+
+# switch to workspace with urgent window
+for_window [urgent="latest"] focus
+focus_on_window_activation   focus
+
+# container layout
+bindsym $Mod+h split h
+bindsym $Mod+v split v
+bindsym $Mod+Shift+t layout tabbed
+bindsym $Mod+Shift+s layout stacking
+bindsym $Mod+Shift+h layout toggle split
+
+default_orientation horizontal
+
+
+# Scratchpad, Floating
+bindsym $Mod+space floating toggle
+floating_modifier  Mod1
+
+
+#####################################################################################################################
+#################                          moving around workspaces                                 #################
+#####################################################################################################################
+
+
+# next/previous workspace
+
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
+bindsym $mod+Tab workspace back_and_forth
+
+#navigate workspaces next / previous
+bindsym Mod1+Ctrl+Right workspace next
+bindsym Mod1+Ctrl+Left workspace prev
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+
+
+
+
+#####################################################################################################################
+#################                          Tiling parameters                                        #################
+#####################################################################################################################
+
+
+
+
+#####################################################################################################################
+#################                          choose the font                                          #################
+#####################################################################################################################
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# choose your font
+font pango:Noto Mono Regular 10
+
+# TRAY APPLICATIONS
+
+# applications that are not installed will not start
+# you may see a wheel - hashtag out things you do not want
+
+#Authentication dialog
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# Updater
+exec --no-startup-id pamac-tray
+
+# bluetooth
+exec --no-startup-id blueberry-tray
+
+# network
+exec --no-startup-id nm-applet
+
+# num lock activated
+exec_always --no-startup-id numlockx on
+
+# dropbox
+#exec --no-startup-id dropbox start
+
+# insync
+#exec --no-startup-id insync start
+
+# volume
+#exec --no-startup-id pasystray
+exec --no-startup-id volumeicon
+
+#variety
+#exec --no-startup-id variety
+
+# clipman
+#exec --no-startup-id xfce4-clipman
+
+#Conky
+#exec --no-startup-id conky -c ~/.config/i3/system-overview
+
+#Polybar
+exec --no-startup-id ~/.config/polybar/launch.sh &
+
+#####################################################################################################################
+#################                                 system applications                               #################
+#####################################################################################################################
+
+exec --no-startup-id xfce4-power-manager &
+# ommitted next line to get super key to bring up the menu in xfce and avoid error then in i3
+# IF xfsettingsd is activated you can not change themes
+#exec --no-startup-id xfsettingsd &
+exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+
+#####################################################################################################################
+#################                          applications keyboard shortcuts                          #################
+#####################################################################################################################
+
+# terminal
+bindsym $mod+Return exec --no-startup-id termite;focus
+bindsym $mod+KP_Enter exec --no-startup-id termite;focus
